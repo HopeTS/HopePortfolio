@@ -1,0 +1,15 @@
+/* Light Theme (Default) */
+:root {
+  --color-primary: #4f46e5; /* Indigo */
+  --color-secondary: #ec4899; /* Pink */
+  --color-background: #ffffff; /* White */
+  --color-text: #333333; /* Dark Gray */
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-primary: #818cf8; /* Light Indigo */
+  --color-secondary: #f472b6; /* Light Pink */
+  --color-background: #1e293b; /* Slate Gray */
+  --color-text: #e2e8f0; /* Light Gray */
+}

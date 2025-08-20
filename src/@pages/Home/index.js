@@ -1,0 +1,30 @@
+import * as C from "@components";
+
+import styles from "./index.module.css";
+import * as assets from "@assets";
+
+export const Home = () => {
+  return (
+    <C.Page>
+      <C.Content.Outer>
+        <C.AnimatedBackground />
+        <C.Content.Outer className={styles.Home_splash}>
+          <C.Content.Inner className={styles.Home_splash_content}>
+            <div className={styles.Home_splash_name}>
+              Jenna <span>[HopeTS]</span>
+            </div>
+            <div className={styles.Home_splash_tagline}>
+              Full-Stack Developer
+            </div>
+          </C.Content.Inner>
+        </C.Content.Outer>
+      </C.Content.Outer>
+      <C.Content.Outer className={styles.Home_info}>
+        Home page <C.ThemeToggler />
+        <img src={assets.pfp} className={styles.Home_splash_pfp} />
+      </C.Content.Outer>
+    </C.Page>
+  );
+};
+
+export default Home;

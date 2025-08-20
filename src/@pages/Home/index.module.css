@@ -1,0 +1,46 @@
+.Home {
+}
+
+.Home_splash {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  height: 100vh;
+}
+
+.Home_splash_name {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.Home_splash_name span {
+  font-weight: normal;
+}
+
+.Home_splash_tagline {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  font-weight: 300;
+  text-align: left;
+}
+
+.Home_splash_content {
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.Home_info {
+}
+
+.Home_info_content {
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
