@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import * as C from "@components";
 
-export const AnimatedBackground = () => {
+export const AnimatedBackground = (fadeDown = true) => {
   const vantaRef = useRef(null);
   const effectRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
@@ -42,6 +42,7 @@ export const AnimatedBackground = () => {
   return (
     <C.Content.Outer className={styles.AnimatedBackground}>
       <div className={styles.AnimatedBackground_content} ref={vantaRef} />
+      {fadeDown && <div className={styles.AnimatedBackground_fade} />}
     </C.Content.Outer>
   );
 };

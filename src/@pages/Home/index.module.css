@@ -2,6 +2,7 @@
 }
 
 .Home_splash {
+  position: absolute;
   color: white;
   font-family: "Raleway", sans-serif;
   height: 100vh;
@@ -31,6 +32,19 @@
   font-size: 3rem;
   text-align: center;
   margin-top: 2rem;
+}
+
+.Home_transition {
+  margin-top: 100vh;
+}
+
+.Home_transition_block {
+  width: 100vw;
+  height: 60px;
+  pointer-events: none;
+  z-index: 1;
+  background: var(--color-background, #0d1424);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
 }
 
 .Home_info {

@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.linkIcon {
+  width: 32px;
+  height: 32px;
+}
