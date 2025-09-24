@@ -1,0 +1,114 @@
+.Timeline {
+  position: relative;
+
+  --timeline-rail-width: 3px;
+  --timeline-padding: 24px;
+
+  /* themeable */
+  --timeline-rail-color: var(--color-primary);
+  --timeline-dot-fill: color-mix(
+    in oklab,
+    var(--color-primary) 12%,
+    transparent
+  );
+  --timeline-label-color: var(--color-foreground);
+}
+
+.Timeline_rail {
+  position: absolute;
+  top: var(--timeline-padding);
+  bottom: var(--timeline-padding);
+  left: 50%;
+  width: var(--timeline-rail-width);
+  transform: translateX(calc(-1 * var(--timeline-rail-width) / 2));
+  background: var(--timeline-rail-color);
+  border-radius: 9999px;
+}
+
+.Timeline_now_label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(12px);
+  font-size: 12px;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.Timeline_item {
+  position: absolute;
+  inset: 0;
+
+  --item-color: var(--timeline-rail-color);
+}
+
+/* optional range highlight */
+.Timeline_range_segment {
+  position: absolute;
+  left: 50%;
+  width: var(--timeline-rail-width);
+  transform: translateX(calc(-1 * var(--timeline-rail-width) / 2));
+  background: color-mix(in oklab, var(--item-color) 45%, transparent);
+  border-radius: 9999px;
+}
+
+.Timeline_dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--timeline-dot-fill);
+  border: 3px solid var(--item-color);
+  box-shadow: 0 0 0 2px color-mix(in oklab, black 4%, transparent);
+}
+
+.Timeline_leader {
+  position: absolute;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  background: var(--item-color);
+}
+
+.Timeline_leader.right {
+  transform: translateX(0);
+}
+
+.Timeline_leader.left {
+  transform: translateX(-24px);
+}
+
+/* label bubble */
+.Timeline_label {
+  position: absolute;
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.25;
+  color: var(--timeline-label-color);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--item-color) 6%, transparent);
+  border: 1px solid color-mix(in oklab, var(--item-color) 18%, transparent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.Timeline_label.right {
+  left: calc(50% + 28px);
+  text-align: left;
+}
+
+.Timeline_label.left {
+  right: calc(50% + 28px);
+  text-align: right;
+}
+
+.Timeline_label_title {
+  font-weight: 600;
+}
+
+.Timeline_label_meta {
+  opacity: 0.7;
+  font-size: 12px;
+  margin-top: 2px;
+}
