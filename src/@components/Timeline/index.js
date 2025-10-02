@@ -42,17 +42,18 @@ export default function Timeline({
   }, []);
 
   // parse and validate items
-  const parsed = useMemo(() => {
-    const toDate = (v) =>
-      v ? (v instanceof Date ? v : new Date(v)) : undefined;
-
+  const tlItems = useMemo(() => {
     return items.map((item, i) => {
-      const start = toDate(item.startDate);
-      const end = toDate(item.endDate);
+      const start = item.startDate;
+      const end = item.endDate || new Date();
 
       // where the dot sits – pick start if present, otherwise end
       const anchor = start ?? end;
       if (!anchor) return null;
+
+      // pick a distinct color for this item
+      const hue = (i * 45) % 360; // change 45 to 30/60 for tighter/looser spacing
+      const color = `hsl(${hue}, 70%, 50%)`;
 
       return {
         ...item,
@@ -60,6 +61,7 @@ export default function Timeline({
         _start: start,
         _end: end,
         _anchor: anchor,
+        color: color, // attach a generated color
       };
     });
   }, [items]);
@@ -67,9 +69,9 @@ export default function Timeline({
   const { tNow, tMin } = useMemo(() => {
     const _now = new Date(now).getTime();
     const oldestFromItems =
-      parsed.length > 0
+      tlItems.length > 0
         ? Math.min(
-            ...parsed.map((p) =>
+            ...tlItems.map((p) =>
               Math.min(
                 p._start?.getTime() ?? Infinity,
                 p._end?.getTime() ?? Infinity
@@ -82,7 +84,7 @@ export default function Timeline({
       return { tNow: _now + 1, tMin: oldestFromItems };
     }
     return { tNow: _now, tMin: oldestFromItems };
-  }, [parsed, now]);
+  }, [tlItems, now]);
 
   const innerHeight = Math.max(containerHeight - padding * 2, 1);
   const span = Math.max(tNow - tMin, 1);
@@ -117,31 +119,47 @@ export default function Timeline({
       </div>
 
       {/* Items */}
-      {parsed.map((p) => {
-        const y = yForTime(p._anchor.getTime());
+      {tlItems.map((p) => {
+        const clampY = (y) =>
+          Math.max(padding, Math.min(padding + innerHeight, y));
+
+        const y = clampY(yForTime(p._anchor.getTime()));
         const side = p.side === "left" ? "left" : "right";
-        const startY = p._start ? yForTime(p._start.getTime()) : undefined;
-        const endY = p._end ? yForTime(p._end.getTime()) : undefined;
+        const startY = p._start
+          ? clampY(yForTime(p._start.getTime()))
+          : undefined;
+        const endY = p._end ? clampY(yForTime(p._end.getTime())) : undefined;
 
-        const segmentTop =
-          startY !== undefined && endY !== undefined
-            ? Math.min(startY, endY)
-            : undefined;
-        const segmentHeight =
-          startY !== undefined && endY !== undefined
-            ? Math.abs(endY - startY)
-            : undefined;
+        // NEW: duration segment math
+        let segTop, segHeight;
+        if (startY !== undefined) {
+          if (endY !== undefined) {
+            // start ↔ end
+            segTop = Math.min(startY, endY);
+            segHeight = Math.max(2, Math.abs(endY - startY));
+          } else {
+            // open-ended: now (top) ↔ start
+            segTop = padding; // top of the rail area = "now"
+            segHeight = Math.max(2, startY - padding);
+          }
+        }
 
-        // color per-item via CSS var (falls back to var(--color-primary))
         const itemStyle = { "--item-color": p.color || "var(--color-primary)" };
 
         return (
           <div key={p._idx} className={styles.Timeline_item} style={itemStyle}>
-            {/* range segment (optional) */}
-            {segmentTop !== undefined && segmentHeight !== undefined && (
+            {/* duration segment */}
+            {segTop !== undefined && segHeight !== undefined && (
               <div
                 className={styles.Timeline_range_segment}
-                style={{ top: segmentTop, height: Math.max(2, segmentHeight) }}
+                style={{
+                  top: segTop,
+                  height: segHeight,
+                  width: railWidth + 4,
+                  opacity: 0.8,
+                  // uncomment for a solid line instead of translucent:
+                  // background: "var(--item-color)",
+                }}
                 aria-hidden
               />
             )}
@@ -154,7 +172,7 @@ export default function Timeline({
               style={{ top: y - 6 }}
             />
 
-            {/* leader line */}
+            {/* leader */}
             <div
               className={`${styles.Timeline_leader} ${
                 side === "left" ? styles.left : styles.right
@@ -174,7 +192,7 @@ export default function Timeline({
               <div className={styles.Timeline_label_meta}>
                 {p._start && p._end
                   ? `${formatDate(p._start)} — ${formatDate(p._end)}`
-                  : formatDate(p._anchor)}
+                  : `${formatDate(p._start ?? p._anchor)} — Present`}
               </div>
             </div>
           </div>
