@@ -41,13 +41,19 @@ export default function Timeline({
     return () => resize.disconnect();
   }, []);
 
-  // parse and validate items
+  /**  parse and validate timeline items */
   const tlItems = useMemo(() => {
-    return items.map((item, i) => {
+    const sortedItems = [...items].sort((a, b) => {
+      return (a.startDate ?? 0) - (b.startDate ?? 0);
+    });
+
+    return sortedItems.map((item, i) => {
       const start = item.startDate;
       const end = item.endDate || new Date();
 
-      // where the dot sits – pick start if present, otherwise end
+      const side = (i + 2) % 2 === 1 ? "left" : "right";
+
+      /** Anchor point for the dot. */
       const anchor = start ?? end;
       if (!anchor) return null;
 
@@ -61,6 +67,7 @@ export default function Timeline({
         _start: start,
         _end: end,
         _anchor: anchor,
+        _side: side,
         color: color, // attach a generated color
       };
     });
@@ -175,7 +182,7 @@ export default function Timeline({
             {/* leader */}
             <div
               className={`${styles.Timeline_leader} ${
-                side === "left" ? styles.left : styles.right
+                p._side === "left" ? styles.left : styles.right
               }`}
               style={{ top: y - 1 }}
               aria-hidden
@@ -184,7 +191,7 @@ export default function Timeline({
             {/* label */}
             <div
               className={`${styles.Timeline_label} ${
-                side === "left" ? styles.left : styles.right
+                p._side === "left" ? styles.left : styles.right
               }`}
               style={{ top: y - 12 }}
             >
