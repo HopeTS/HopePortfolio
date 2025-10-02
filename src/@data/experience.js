@@ -1,9 +1,10 @@
-import { CATEGORY, TAG } from "@data";
+import TAG from "./tag";
+import CATEGORY from "./category";
 
 /** Castamatch project */
 export const CASTAMATCH = {
-  startDate: "TODO",
-  endDate: "TODO",
+  startDate: new Date("2020-08-01"),
+  endDate: new Date("2021-05-01"),
   title: "Castamatch",
   shortDesc: "Livestreaming platform for amateur sports leagues",
   longDesc: "TODO",

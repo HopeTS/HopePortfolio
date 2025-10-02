@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useLayoutEffect, useState } from "react";
 import styles from "./index.module.css";
 
-function fmt(d) {
+function formatDate(d) {
   return d.toLocaleString(undefined, {
     year: "numeric",
     month: "short",
@@ -21,7 +21,7 @@ function fmt(d) {
  * @param {number} [props.railWidth=3]
  */
 export default function Timeline({
-  items,
+  items = [],
   height = 600,
   now = new Date(),
   minTime,
@@ -34,29 +34,29 @@ export default function Timeline({
   useLayoutEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const ro = new ResizeObserver((entries) => {
+    const resize = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        const h = Math.round(entry.contentRect.height);
-        if (h > 0) setContainerHeight(h);
+        const height = Math.round(entry.contentRect.height);
+        if (height > 0) setContainerHeight(height);
       }
     });
-    ro.observe(el);
-    return () => ro.disconnect();
+    resize.observe(el);
+    return () => resize.disconnect();
   }, []);
 
   const parsed = useMemo(() => {
-    const ensureDate = (d) =>
-      d ? (d instanceof Date ? d : new Date(d)) : undefined;
+    const ensureDate = (date) =>
+      date ? (date instanceof Date ? date : new Date(date)) : undefined;
     return items
-      .map((it, i) => {
-        const at = ensureDate(it.at);
-        const start = ensureDate(it.start);
-        const end = ensureDate(it.end);
+      .map((item, i) => {
+        const at = ensureDate(item.at);
+        const start = ensureDate(item.start);
+        const end = ensureDate(item.end);
         const anchor = at ?? start ?? end;
         if (!anchor) return null;
         return {
-          ...it,
-          _idx: it.id ?? String(i),
+          ...item,
+          _idx: item.id ?? String(i),
           _at: at,
           _start: start,
           _end: end,
@@ -179,8 +179,8 @@ export default function Timeline({
               <div className={styles.Timeline_label_title}>{p.title}</div>
               <div className={styles.Timeline_label_meta}>
                 {p._start && p._end
-                  ? `${fmt(p._start)} — ${fmt(p._end)}`
-                  : fmt(p._anchor)}
+                  ? `${formatDate(p._start)} — ${formatDate(p._end)}`
+                  : formatDate(p._anchor)}
               </div>
             </div>
           </div>

@@ -1,6 +1,15 @@
+import { useEffect, useState } from "react";
+
 import styles from "./index.module.css";
 import * as C from "@components";
 import * as assets from "@assets";
+import * as data from "@data";
+
+// Convert data dictionary to list for timeline
+let xp = [];
+for (const key in data.XP) {
+  xp.push(data.XP[key]);
+}
 
 export const Home = () => {
   return (
@@ -24,6 +33,11 @@ export const Home = () => {
       {/* Transition between hero and info*/}
       <C.Content.Outer className={styles.Home_transition}>
         <div className={styles.Home_transition_block} />
+      </C.Content.Outer>
+
+      {/* Timeline section */}
+      <C.Content.Outer className={styles.Home_timeline}>
+        <C.Timeline items={xp} />
       </C.Content.Outer>
 
       {/* Info section */}

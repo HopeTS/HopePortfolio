@@ -1,5 +1,5 @@
 /** Tags for timeline items, used for sorting and filtering */
-export const ITEM_TAGS = {
+export default {
   WEB_DEV: "Web Development",
   FULL_STACK: "Full Stack",
   FRONTEND: "Frontend",

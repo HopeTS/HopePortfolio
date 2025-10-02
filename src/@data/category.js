@@ -1,5 +1,5 @@
 /** Categories for timeline items */
-export const ITEM_CATEGORY = {
+export default {
   WORK: "work",
   EDUCATION: "education",
   PERSONAL: "personal",
