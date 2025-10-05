@@ -51,7 +51,7 @@ export default function Timeline({
       const start = item.startDate;
       const end = item.endDate || new Date();
 
-      const side = (i + 2) % 2 === 1 ? "left" : "right";
+      const side = (i + 2) % 2 === 1 ? "right" : "left";
 
       /** Anchor point for the dot. */
       const anchor = start ?? end;
@@ -72,6 +72,15 @@ export default function Timeline({
       };
     });
   }, [items]);
+
+  /** Earliest start time (for the timeline bottom label) */
+  const earliestStart = useMemo(() => {
+    const times = tlItems
+      .map((p) => p?._start?.getTime())
+      .filter((t) => Number.isFinite(t));
+    if (!times.length) return null;
+    return new Date(Math.min(...times));
+  }, [tlItems]);
 
   const { tNow, tMin } = useMemo(() => {
     const _now = new Date(now).getTime();
@@ -202,6 +211,17 @@ export default function Timeline({
                   : `${formatDate(p._start ?? p._anchor)} — Present`}
               </div>
             </div>
+
+            {/* "start" helper label at the bottom */}
+            {earliestStart && (
+              <div
+                className={styles.Timeline_start_label}
+                style={{ bottom: padding - 10 }}
+                aria-hidden
+              >
+                {formatDate(earliestStart)}
+              </div>
+            )}
           </div>
         );
       })}

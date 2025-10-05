@@ -12,6 +12,7 @@
     transparent
   );
   --timeline-label-color: var(--color-foreground);
+  margin-bottom: 48px;
 }
 
 .Timeline_rail {
@@ -32,6 +33,16 @@
   font-size: 12px;
   opacity: 0.6;
   user-select: none;
+}
+
+.Timeline_start_label {
+  position: absolute;
+  left: calc(50% + 24px);
+  transform: translateX(-12px);
+  font-size: 12px;
+  opacity: 0.5;
+  user-select: none;
+  text-align: right;
 }
 
 .Timeline_item {
@@ -55,11 +66,12 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
   background: var(--timeline-dot-fill);
   border: 3px solid var(--item-color);
+  background-color: var(--item-color);
   box-shadow: 0 0 0 2px color-mix(in oklab, black 4%, transparent);
 }
 
