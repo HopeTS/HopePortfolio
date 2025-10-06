@@ -47,7 +47,7 @@
   height: 60px;
   pointer-events: none;
   z-index: 1;
-  background: var(--color-background, #0d1424);
+  background: var(--darker-color);
   clip-path: polygon(50% 100%, 0 0, 100% 0);
 }
 

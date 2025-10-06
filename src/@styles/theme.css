@@ -12,4 +12,10 @@
   --color-secondary: #f472b6; /* Light Pink */
   --color-background: #1e293b; /* Slate Gray */
   --color-text: #e2e8f0; /* Light Gray */
+
+  --dark-color: #2b3137;
+  --darker-color: #24292e;
+  --light-color: #fafbfc;
+  --lighter-color: #ffffff;
+  --accent-color: #2dba4e;
 }
