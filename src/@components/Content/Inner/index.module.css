@@ -1,0 +1,5 @@
+.Inner {
+  margin: 1rem auto;
+  max-width: calc(100% - 2rem);
+  width: 800px;
+}

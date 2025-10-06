@@ -5,7 +5,7 @@
   --timeline-padding: 24px;
 
   /* themeable */
-  --timeline-rail-color: var(--color-primary);
+  --timeline-rail-color: var(--darker-color);
   --timeline-dot-fill: color-mix(
     in oklab,
     var(--color-primary) 12%,

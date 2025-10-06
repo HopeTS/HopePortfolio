@@ -17,3 +17,16 @@ code {
 button {
   background-color: var(--color-primary);
 }
+
+p {
+  color: var(--light-color);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+span {
+  color: var(--accent-color-2);
+}
+
+a {
+  color: #58a6ff;
+}

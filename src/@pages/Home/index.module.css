@@ -1,4 +1,5 @@
 .Home {
+  background-color: var(--light-color);
 }
 
 .Home_splash {
@@ -6,12 +7,14 @@
   color: white;
   font-family: "Raleway", sans-serif;
   height: 100vh;
+  width: 100vw;
+  overflow: auto;
 }
 
 .Home_splash_name {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   margin-bottom: 0;
   padding-bottom: 0;
   line-height: 1;
@@ -19,30 +22,56 @@
 
 .Home_splash_name span {
   font-weight: normal;
-  font-size: 3rem;
+  font-size: 2.2rem;
+  color: var(--light-color);
 }
 
 .Home_splash_tagline {
   font-size: 2rem;
   margin-top: 0.5rem;
   font-weight: 300;
-  text-align: left;
+  text-align: center;
+}
+
+.Home_splash_pfp {
+  border-radius: 9999px;
+  width: 200px;
+  height: 200px;
 }
 
 .Home_splash_content {
   position: relative;
   z-index: 1;
-  color: var(--text-primary);
+  color: var(--light-color);
   font-size: 3rem;
   text-align: center;
   margin-top: 2rem;
+}
+
+.Home_splash_bottom {
+  margin-top: 24px;
+  align-content: center;
+  margin: auto;
+  text-align: center;
+}
+
+.Home_bottom_text {
+  background-color: var(--darker-color);
+  color: var(--light-color);
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 16px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Home_transition {
   margin-top: 100vh;
 }
 
-.Home_transition_block {
+.Home_transition_block_top {
   width: 100vw;
   height: 60px;
   pointer-events: none;
@@ -61,6 +90,15 @@
   font-size: 1.5rem;
   text-align: center;
   margin-top: 2rem;
+}
+
+.Home_transition_block_bottom {
+  width: 100vw;
+  height: 60px;
+  pointer-events: none;
+  z-index: 1;
+  background: var(--darker-color);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
 }
 
 @media (min-width: 768px) {
