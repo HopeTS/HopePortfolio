@@ -35,6 +35,38 @@
   user-select: none;
 }
 
+/* container for tick marks */
+.Timeline_ticks {
+  position: absolute;
+  inset: 0; /* full overlay */
+  pointer-events: none;
+}
+
+/* base tick style */
+.Timeline_tick {
+  position: absolute;
+  left: 50%;
+  height: 2px;
+  background: var(--timeline-rail-color);
+  /* We position ticks so they END at the rail’s left edge and extend left */
+}
+
+/* small tick (quarter) – 8px long, left of the rail */
+.Timeline_tick.small {
+  width: 8px;
+  /* shift left by rail width + tick width so the right edge meets the rail */
+  transform: translateX(calc(-1 * var(--timeline-rail-width) - 8px));
+  background-color: var(--dark-color);
+}
+
+/* big tick (year) – 14px long, left of the rail */
+.Timeline_tick.big {
+  width: 14px;
+  transform: translateX(calc(-1 * var(--timeline-rail-width) - 14px));
+  opacity: 0.85;
+  background-color: var(--darker-color);
+}
+
 .Timeline_start_label {
   position: absolute;
   left: calc(50% + 24px);

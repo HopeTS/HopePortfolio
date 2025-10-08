@@ -102,6 +102,39 @@ export default function Timeline({
     return { tNow: _now, tMin: oldestFromItems };
   }, [tlItems, now]);
 
+  /**
+   * Ruler ticks: quarters (3 mo) and years (1 yr), starting from earliestStart
+   */
+  const ticks = useMemo(() => {
+    if (!earliestStart) return { quarters: [], years: [] };
+
+    // Normalize to avoid DST issues (use Y/M/D constructor)
+    const base = new Date(
+      earliestStart.getFullYear(),
+      earliestStart.getMonth(),
+      earliestStart.getDate()
+    );
+    const top = new Date(now); // "now" at the top
+
+    // Helper to add months
+    const addMonths = (d, n) =>
+      new Date(d.getFullYear(), d.getMonth() + n, d.getDate());
+
+    // Quarters: start at +3 months and go to now
+    const quarters = [];
+    for (let q = addMonths(base, 3); q <= top; q = addMonths(q, 3)) {
+      quarters.push(q);
+    }
+
+    // Years: first completed year is base + 12 months
+    const years = [];
+    for (let y = addMonths(base, 12); y <= top; y = addMonths(y, 12)) {
+      years.push(y);
+    }
+
+    return { quarters, years };
+  }, [earliestStart, now]);
+
   const innerHeight = Math.max(containerHeight - padding * 2, 1);
   const span = Math.max(tNow - tMin, 1);
 
@@ -133,6 +166,39 @@ export default function Timeline({
       >
         now
       </div>
+
+      {/* Ruler ticks on the left side of the rail */}
+      {ticks && (
+        <div className={styles.Timeline_ticks} aria-hidden>
+          {/* small ticks for every 3 months, excluding where a year tick exists */}
+          {(() => {
+            const yearSet = new Set(ticks.years.map((d) => d.getTime()));
+            return ticks.quarters.map((d, i) => {
+              if (yearSet.has(d.getTime())) return null; // don't double render
+              const y = yForTime(d.getTime());
+              return (
+                <div
+                  key={`q-${i}`}
+                  className={`${styles.Timeline_tick} ${styles.small}`}
+                  style={{ top: y - 1 }}
+                />
+              );
+            });
+          })()}
+
+          {/* big ticks for each full year */}
+          {ticks.years.map((d, i) => {
+            const y = yForTime(d.getTime());
+            return (
+              <div
+                key={`y-${i}`}
+                className={`${styles.Timeline_tick} ${styles.big}`}
+                style={{ top: y - 1 }}
+              />
+            );
+          })}
+        </div>
+      )}
 
       {/* Items */}
       {tlItems.map((p) => {
