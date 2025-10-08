@@ -40,28 +40,29 @@ export const Home = () => {
             <C.LinkRow />
 
             <div className={styles.Home_bottom_text}>
-              <p>
+              <p className={styles.Home_bottom_text_content}>
                 Currently maintaining{" "}
                 <a href="https://github.com/peardrive/PearDriveCore">
                   PearDrive Core
                 </a>
               </p>
 
-              <p>
+              <p className={styles.Home_bottom_text_content}>
                 <span>Full-stack developer</span>, specializing in{" "}
                 <span>Node.js</span> and <span>React</span> applications.
               </p>
 
-              <p>
+              <p className={styles.Home_bottom_text_content}>
                 Around 5 years of professional experience, and a BSc in Computer
                 Science.
               </p>
 
-              <p>
+              <p className={styles.Home_bottom_text_content}>
                 I love building modules and applications that make the internet
                 more accessible and giving users more control over their digital
                 lives.
               </p>
+              <div className={styles.Home_bottom_text_bg} />
             </div>
           </C.Content.Inner>
         </C.Content.Outer>
@@ -74,7 +75,9 @@ export const Home = () => {
 
       {/* Timeline section */}
       <C.Content.Outer className={styles.Home_timeline}>
+        <div className={styles.Home_timeline_bg} />
         <C.Timeline items={xp} />
+        <div className={styles.Home_timeline_bottom_padding} />
       </C.Content.Outer>
 
       {/* Footer transition */}
