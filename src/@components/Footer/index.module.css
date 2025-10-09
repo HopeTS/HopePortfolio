@@ -1,0 +1,9 @@
+.Footer {
+  background-color: var(--darker-color);
+  padding: 32px;
+}
+
+.Footer_content {
+  color: var(--light-color);
+  font-size: 14px;
+}

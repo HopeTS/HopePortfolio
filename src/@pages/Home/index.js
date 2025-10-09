@@ -84,6 +84,8 @@ export const Home = () => {
       <C.Content.Outer className={styles.Home_transition_bottom}>
         <div className={styles.Home_transition_block_bottom} />
       </C.Content.Outer>
+
+      <C.Footer />
     </C.Page>
   );
 };
