@@ -2,7 +2,8 @@ import React from "react";
 import clsx from "clsx";
 
 import styles from "./index.module.css";
-import githubIcon from "../../@assets/images/github.png";
+import githubIcon from "@assets/images/github.png";
+import { email } from "@assets/images";
 
 const LinkRow = ({ className }) => {
   return (
@@ -13,6 +14,13 @@ const LinkRow = ({ className }) => {
         rel="noopener noreferrer"
       >
         <img src={githubIcon} alt="GitHub" className={styles.linkIcon} />
+      </a>
+      <a
+        href="mailto:jennabaudelaire@pm.me"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src={email} alt="Email" className={styles.linkIcon} />
       </a>
     </div>
   );

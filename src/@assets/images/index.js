@@ -1,6 +1,7 @@
 export { default as castamatch } from "./castamatch.png";
 export { default as castamatch120 } from "./castamatch120.png";
 export { default as computercodeicon } from "./computercodeicon.png";
+export { default as email } from "./email.png";
 export { default as finalsite } from "./finalsite.png";
 export { default as finalsite120 } from "./finalsite120.png";
 export { default as github } from "./github.png";
