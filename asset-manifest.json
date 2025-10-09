@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0f83abca.css",
+    "main.js": "/static/js/main.f3a10610.js",
+    "static/media/computercodeicon.png": "/static/media/computercodeicon.851d7e0a9b98f3fd7f7e.png",
+    "static/media/patreon.png": "/static/media/patreon.ca0e519ecec3b1d5ee7e.png",
+    "static/media/finalsite.png": "/static/media/finalsite.58bdf0e18fdf55a0447e.png",
+    "static/media/solotwitch.png": "/static/media/solotwitch.cfd50b39126eeb735b3c.png",
+    "static/media/finalsite120.png": "/static/media/finalsite120.2ed620ee893264c24bec.png",
+    "static/media/walkoff120.png": "/static/media/walkoff120.baaa5769b105cb3d4d09.png",
+    "static/media/github.png": "/static/media/github.1a0d3b3a8e1cfb766050.png",
+    "static/media/github256white.png": "/static/media/github256white.d434177a222c2eec0fe5.png",
+    "static/media/pfp.jpg": "/static/media/pfp.4530cc8ca65b7dc7d8d5.jpg",
+    "static/media/castamatch120.png": "/static/media/castamatch120.856a0c850db8a7e62562.png",
+    "static/media/htmlcode256white.png": "/static/media/htmlcode256white.757ddaa21a0d50ef13a5.png",
+    "static/media/github256black.png": "/static/media/github256black.e51df96613b99ac588b9.png",
+    "static/media/htmlcode256black.png": "/static/media/htmlcode256black.4a4c50c0b116c1cdaf44.png",
+    "static/media/walkoff.png": "/static/media/walkoff.40875c058be91c55f68a.png",
+    "static/media/castamatch.png": "/static/media/castamatch.8e7882d5daa455025ec8.png",
+    "static/media/twdh.png": "/static/media/twdh.aa6b699c42233f486b51.png",
+    "static/media/htmlcode.png": "/static/media/htmlcode.c482a2d4af92817fae9d.png",
+    "static/media/patreon256white.png": "/static/media/patreon256white.21c1d6d5f67725fae05c.png",
+    "static/media/patreon256black.png": "/static/media/patreon256black.87a33f6abe1eecd899c3.png",
+    "static/media/youtube256white.png": "/static/media/youtube256white.2b194d970888e8fd0859.png",
+    "static/media/youtube256black.png": "/static/media/youtube256black.33d9ad2509ebb9ca84c6.png",
+    "static/media/twdh120.png": "/static/media/twdh120.01fb43766ba7647d5716.png",
+    "static/media/youtube.png": "/static/media/youtube.8b4b6325f6d2cf999940.png",
+    "index.html": "/index.html",
+    "main.0f83abca.css.map": "/static/css/main.0f83abca.css.map",
+    "main.f3a10610.js.map": "/static/js/main.f3a10610.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f83abca.css",
+    "static/js/main.f3a10610.js"
+  ]
+}
