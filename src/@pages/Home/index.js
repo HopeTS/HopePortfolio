@@ -34,19 +34,24 @@ export const Home = () => {
               <div className={styles.Home_splash_tagline}>
                 Full-Stack Developer
               </div>
+              <div className={styles.Home_splash_email}>
+                jennabaudelaire@pm.me
+              </div>
             </div>
           </C.Content.Inner>
           <C.Content.Inner className={styles.Home_splash_bottom}>
             <C.LinkRow />
 
-            <div className={styles.Home_bottom_text}>
+            <div className={styles.Home_currently}>
               <p className={styles.Home_bottom_text_content}>
                 Currently maintaining{" "}
                 <a href="https://github.com/peardrive/PearDriveCore">
                   PearDrive Core
                 </a>
               </p>
+            </div>
 
+            <div className={styles.Home_bottom_text}>
               <p className={styles.Home_bottom_text_content}>
                 <span>Full-stack developer</span>, specializing in{" "}
                 <span>Node.js</span> and <span>React</span> applications.

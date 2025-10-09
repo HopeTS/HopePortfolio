@@ -23,7 +23,7 @@ export const AnimatedBackground = (fadeDown = true) => {
         scale: 1.5,
         zoom: 1.5,
         scaleMobile: 1.3,
-        backgroundColor: 0x2b3137,
+        backgroundColor: 0x24292e,
         color: 0x2dba4e,
         points: 20.0,
         maxDistance: 22.0,
