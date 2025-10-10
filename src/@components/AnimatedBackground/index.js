@@ -15,9 +15,9 @@ function getVantaConfig() {
   const bp = getBreakpoint(w);
 
   // Base per-breakpoint
-  var points = bp === "desktop" ? 20 : bp === "tablet" ? 12 : 8;
-  var maxDistance = bp === "desktop" ? 22 : bp === "tablet" ? 18 : 14;
-  var spacing = bp === "desktop" ? 14 : bp === "tablet" ? 16 : 18;
+  var points = bp === "desktop" ? 20 : bp === "tablet" ? 16 : 2;
+  var maxDistance = bp === "desktop" ? 22 : bp === "tablet" ? 20 : 16;
+  var spacing = bp === "desktop" ? 14 : bp === "tablet" ? 15 : 16;
 
   // Soften on very high-DPI devices
   var dprFactor = Math.min(1, 1.25 / dpr);
