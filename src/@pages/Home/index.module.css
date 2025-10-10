@@ -108,6 +108,7 @@
   z-index: 1;
   background: var(--darker-color);
   clip-path: polygon(50% 100%, 0 0, 100% 0);
+  margin: 0;
 }
 
 .Home_timeline {
@@ -152,6 +153,7 @@
   z-index: 1;
   background: var(--darker-color);
   clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  margin: 0;
 }
 
 @media (min-width: 768px) {
