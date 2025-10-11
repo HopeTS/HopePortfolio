@@ -98,8 +98,13 @@
   position: relative;
 }
 
+.Home_splash_padding {
+  height: 100vh;
+  margin: 0;
+}
+
 .Home_transition {
-  margin-top: 100vh;
+  margin-top: 100vh 0 0 0;
 }
 
 .Home_transition_block_top {

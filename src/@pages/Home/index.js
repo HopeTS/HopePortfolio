@@ -74,9 +74,8 @@ export const Home = () => {
       </C.Content.Outer>
 
       {/* Transition between hero and info*/}
-      <C.Content.Outer className={styles.Home_transition}>
-        <div className={styles.Home_transition_block_top} />
-      </C.Content.Outer>
+      <div className={styles.Home_splash_padding} />
+      <div className={styles.Home_transition_block_top} />
 
       {/* Timeline section */}
       <C.Content.Outer className={styles.Home_timeline}>
